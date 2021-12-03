@@ -6,7 +6,10 @@ digital_screen = types.InlineKeyboardMarkup(row_width=8)
 text_and_data = []
 for i in range(8):
     for j in range(8):
+        #ADD 64 OFF-BUTTONS
         text_and_data.append(['⚪', f"{str(i)}_{str(j)}"])
+
+#ADD READY AND CANCEL
 text_and_data.append(['Готово✅', 'end'])
 text_and_data.append(['Отмена❌', 'cancel'])
 

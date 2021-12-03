@@ -5,6 +5,7 @@ import serial
 from python.Buttons.pBttns_inline import text_and_data_2
 arduino = serial.Serial(port='COM3', baudrate=9600, timeout=.1)
 
+#LED BUTTONS
 async def buttns_query(query: types.CallbackQuery):
     global text_and_data_2
 
@@ -34,6 +35,7 @@ async def buttns_query(query: types.CallbackQuery):
         pass
 
 
+#CANCEL BUTTON
 async def cancel_func(query: types.CallbackQuery):
 
     await query.message.delete()
@@ -48,6 +50,7 @@ async def cancel_func(query: types.CallbackQuery):
     text_and_data_2.append(['Отмена❌', 'cancel'])
 
 
+#READY BUTTON
 async def end_func(query: types.CallbackQuery):
     global text_and_data_2
     text_and_data_3 = []
