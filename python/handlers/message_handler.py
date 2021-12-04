@@ -2,7 +2,8 @@ from aiogram import types, Dispatcher
 
 from python.Buttons.pBttns_inline import digital_screen
 
-#COMMAND /START
+
+# COMMAND /START
 async def start_command(message: types.Message):
     await message.answer("Для того, чтоб у вас не лагало, лучше нажимать ОТМЕНА или ГОТОВО после того, как "
                          "вы закончите редактирование.\n", reply_markup=digital_screen)

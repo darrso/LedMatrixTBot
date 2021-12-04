@@ -3,12 +3,14 @@ import time
 from aiogram import types, Dispatcher
 import serial
 from python.Buttons.pBttns_inline import text_and_data_2
-arduino = serial.Serial(port='COM3', baudrate=9600, timeout=.1)
+from python.config import aPort
 
-#LED BUTTONS
+arduino = serial.Serial(port=aPort, baudrate=9600, timeout=.1)
+
+
+# LED BUTTONS
 async def buttns_query(query: types.CallbackQuery):
     global text_and_data_2
-
 
     data = query.data.split('_')
     count = 0
@@ -35,9 +37,8 @@ async def buttns_query(query: types.CallbackQuery):
         pass
 
 
-#CANCEL BUTTON
+# CANCEL BUTTON
 async def cancel_func(query: types.CallbackQuery):
-
     await query.message.delete()
     await query.message.answer('Отменено!')
 
@@ -50,7 +51,7 @@ async def cancel_func(query: types.CallbackQuery):
     text_and_data_2.append(['Отмена❌', 'cancel'])
 
 
-#READY BUTTON
+# READY BUTTON
 async def end_func(query: types.CallbackQuery):
     global text_and_data_2
     text_and_data_3 = []
@@ -58,7 +59,7 @@ async def end_func(query: types.CallbackQuery):
     count = 0
     count_2 = 0
     for i in range(64):
-        if i%8 == 0:
+        if i % 8 == 0:
             text_and_data_3.append('')
         if text_and_data_2[i][0] == '🟡':
             text_and_data_3[count_2] += '1'
@@ -70,17 +71,13 @@ async def end_func(query: types.CallbackQuery):
             count = 0
             count_2 += 1
 
-
     await query.message.delete_reply_markup()
     await query.message.edit_text('Готово!')
 
     for i in range(8):
         arduino.write(str(int(text_and_data_3[i], 2)).encode())
         print(arduino.readall())
-    """
-    ДОБАВИТЬ ОТПРАКУ В АРДУИНО
-    
-    """
+
     text_and_data_2 = []
     for i in range(8):
         for j in range(8):
