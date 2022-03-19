@@ -77,6 +77,7 @@ async def end_func(query: types.CallbackQuery):
     await query.message.edit_text('Готово!')
 
     for i in range(8):
+        print(text_and_data_3[i])
         arduino.write(str(int(text_and_data_3[i], 2)).encode())
         print(arduino.readall())
 
