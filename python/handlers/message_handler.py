@@ -1,6 +1,7 @@
 from aiogram import types, Dispatcher
-
-from python.Buttons.pBttns_inline import digital_screen
+import sys
+sys.path.append("python")
+from Buttons.pBttns_inline import digital_screen
 
 
 # COMMAND /START
