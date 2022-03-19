@@ -2,8 +2,10 @@ import time
 
 from aiogram import types, Dispatcher
 import serial
-from python.Buttons.pBttns_inline import text_and_data_2
-from python.config import aPort
+import sys
+sys.path.append("python")
+from Buttons.pBttns_inline import text_and_data_2
+from config import aPort
 
 arduino = serial.Serial(port=aPort, baudrate=9600, timeout=.1)
 
