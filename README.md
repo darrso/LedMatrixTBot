@@ -4,7 +4,7 @@
 
 For this you need:
 - arduino uno (or arduino compatible board)
-- 16 male-male wires
+- 16 male-female wires
 - usb 2.0 A-B(to connect arduino to com port)
 - computer with com-port
 
